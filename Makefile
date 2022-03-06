@@ -1,6 +1,6 @@
 
-GL.js : GL.ts
-	tsc $^ --target es6
+web_root/Fire.js : dev/Fire.ts
+	tsc $^ --outFile $@ --target es6 
 
-all: GL.ts
+all: web_root/Fire.js
 	echo "done"
