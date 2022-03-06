@@ -25,8 +25,9 @@ void main() {
 
     vec2 cur_uv = uv;
 
+    float snoise_value = clampf(snoise(cur_uv * 0.2 + vec2(0, -time)));
 
-    float a = clampf(snoise(cur_uv * 0.2 + vec2(0, -time))) * 0.5;
+    float a =  snoise_value * 0.5;
 
     a += clampf(noise(cur_uv * 2.0 + vec2(0, -time)));
 
@@ -50,7 +51,7 @@ void main() {
     a = clampf(a);
 
     float glow = 1.2 - distance(vec2(0.0, -0.2), FragPos * vec2(1.8 + pow(FragPos.y, 2.0), 0.5 * FragPos.y));
-    glow *= 0.5;
+    glow *= snoise_value * 0.2 + 0.5;
 
     a = max(a, glow);
     a = pow(a, 0.7);
@@ -61,9 +62,11 @@ void main() {
         smoothh  = 1.0 -(abs(FragPos.y) - 0.8) * 5.0;
     }
 
+    vec4 result = vec4(a ,  a - 0.25  , 0.1, a * pow(smoothh, 0.5));
 
+    result.rgb *= 2.8 * (1.0 - abs(FragPos.x)) * (1.0 - abs(FragPos.y * 0.5 + 0.5));
 
-    gl_FragColor = vec4(a ,  a - 0.25  , 0.0, a * pow(smoothh, 0.5));
+    gl_FragColor = result;
 }
 
 
