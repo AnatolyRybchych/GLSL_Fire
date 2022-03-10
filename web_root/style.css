@@ -1,6 +1,6 @@
 
 html{
-    background: #050000;
+    background: #000000;
 }
 
 .candle_fire{
@@ -9,5 +9,4 @@ html{
     top: calc(50% - 600px / 2);
     width: 600px;
     height: 600px;
-    background-color: #000;
 }

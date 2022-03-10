@@ -38,7 +38,7 @@ class Fire {
         this.gl.blendFunc(this.gl.SRC_ALPHA, this.gl.ONE_MINUS_SRC_ALPHA);
     }
     Draw() {
-        this.gl.clearColor(0.019, 0, 0, 1);
+        this.gl.clearColor(0, 0, 0, 0);
         this.gl.clear(this.gl.COLOR_BUFFER_BIT);
         this.gl.useProgram(Fire.prog);
         var now = new Date();

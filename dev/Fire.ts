@@ -54,7 +54,7 @@ class Fire{
     }
 
     public Draw():void{
-        this.gl.clearColor(0.019,0,0,1);
+        this.gl.clearColor(0,0,0,0);
         this.gl.clear(this.gl.COLOR_BUFFER_BIT);
         this.gl.useProgram(Fire.prog);
         var now:Date = new Date();
